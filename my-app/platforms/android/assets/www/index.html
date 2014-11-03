@@ -38,26 +38,46 @@
             <div data-role="header">
             </div>
             <div data-role="main" class="ui-content"> 
+                <form name="formCliente" id="formCliente">
+                    <input type="hidden" name="id" id="id">
                     <label><b>Nome:</b></label>
-                    <input type="text" name="nome" autofocus>
+                    <input type="text" name="nome" id="nome" autofocus>
                     <br/>
                     <label><b>CPF:</b></label>
-                    <input type="text" name="cpf">
+                    <input type="text" name="cpf" id="cpf">
                     <br/>
                     <label><b>RG:</b></label>
-                    <input type="text" name="rg">
+                    <input type="text" name="rg" id="rg">
                     <br/>
                     <label><b>Telefone:</b></label>
-                    <input type="text" name="telefone">
+                    <input type="text" name="telefone" id="telefone" placeholder="(88)8888-8888">
                     <br/>
                     <label><b>Email:</b></label>
-                    <input type="email" name="mail">
+                    <input type="email" name="mail" id="mail">
                     <br/>
-                    <button type="submit"><span>Salvar</span></button>                    
+                    <button onclick="salvar();"><span>Salvar</span></button>   
+                </form>                 
             </div> 
         </div>
     </body>
 </html>
+<script type="text/javascript">
+    function salvar(){
+        var formulario = $('#formCliente').serialize();
+        $.ajax({
+            type:'POST',
+            data:formulario,
+            url:'',
+            success:function(data){
+                alert('Registro inserido com sucesso.');
+                window.location = "";
+            },
+            error:function(){
+                alert('Erro no Banco!');
+            }
+        });
+    }
+</script>
 <!--
     https://www.youtube.com/user/natanaelldiego/search?query=phonegap
 -->
